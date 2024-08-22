@@ -8,7 +8,8 @@ Profesor: Edwin Nelson Montoya Múnera (emontoya@eafit.edu.co)
 
 # 1. Descripción
 
-Red P2P basada en Chord y DHT utilizada para envío y recepción de dummy data.
+* Red P2P basada en Chord y DHT utilizada para envío y recepción de dummy data.
+* Adjuntar fotografías del resultado final
 
 ## 1.1. Aspectos cumplidos
 
@@ -37,13 +38,12 @@ Red P2P basada en Chord y DHT utilizada para envío y recepción de dummy data.
 
 ## 3.2. Compilación y ejecución
 
-Descripción y como se configura los parámetros del proyecto
+Configuración de los parámetros del proyecto
+
 * ip
 * puertos
 * variables de ambiente
 * parámetros
-
-## opcionalmente - si quiere mostrar resultados o pantallazos 
 
 # 4. Descripción del ambiente de ejecución
 
