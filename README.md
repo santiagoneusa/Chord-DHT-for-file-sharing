@@ -1,10 +1,10 @@
-# Tópicos Especiales en Telemática - ST0263
-
-# Estudiantes: David Grisales Posada (dgrisalesp@eafit.edu.co) & Santiago Neusa Ruiz (sneusar@eafit.edu.co)
-
-# Profesor: Edwin Nelson Montoya Múnera (emontoya@eafit.edu.co)
-
 # Reto 1: Arquitectura P2P y comunicación entre procesos mediante API REST, RPC y MOM
+
+Asignatura: Tópicos Especiales en Telemática - ST0263
+
+Estudiantes: David Grisales Posada (dgrisalesp@eafit.edu.co) & Santiago Neusa Ruiz (sneusar@eafit.edu.co)
+
+Profesor: Edwin Nelson Montoya Múnera (emontoya@eafit.edu.co)
 
 # 1. Descripción
 
