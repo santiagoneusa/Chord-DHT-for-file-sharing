@@ -38,6 +38,8 @@ Profesor: Edwin Nelson Montoya Múnera (emontoya@eafit.edu.co)
 
 ## 3.2. Compilación y ejecución
 
+> pip install -r requirements.txt
+
 Configuración de los parámetros del proyecto
 
 * ip
