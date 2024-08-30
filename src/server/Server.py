@@ -41,11 +41,11 @@ class Server():
         self.network_zones_directory[available_zone_key]['ip:port'].append(f'{node_ip}:{node_port}')
         return node_id, available_zone_key, self.number_of_zones, self.zone_size
 
-    def unregister_node(self, zone, node_id) -> bool:
+    def unregister_node(self, zone_key, node_id) -> bool:
         try:
-            node_id_index = self.network_zones_directory[zone]['id'].index(node_id)
-            self.network_zones_directory[zone]['id'].pop(node_id_index)
-            self.network_zones_directory[zone]['ip:port'].pop(node_id_index)
+            node_id_index = self.network_zones_directory[zone_key]['id'].index(node_id)
+            self.network_zones_directory[zone_key]['id'].pop(node_id_index)
+            self.network_zones_directory[zone_key]['ip:port'].pop(node_id_index)
             return True
         except:
             return False

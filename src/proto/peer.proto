@@ -1,0 +1,33 @@
+syntax = "proto3;
+package peer;
+
+service PeerService {
+    rpc Register(RegisterRequest) return (RegisterResponse)
+    rpc Unregister(UnregisterRequest) return (UnregisterResponse)
+    rpc NodesByZone(NodesByZoneRequest) return (NodesByZoneResponse)
+    
+    rpc UploadFile (UploadFileRequest) return (UploadFileResponse)
+    rpc DownloadFile (DownloadFileResponse) return (DownloadFileResponse)
+}
+
+message RegisterRequest {
+    
+}
+
+message UnregisterResponse {
+
+}
+
+message NodesByZoneResponse {
+
+}
+
+
+
+message UploadFileResponse {
+
+}
+
+message DownloadFileResponse {
+
+}
