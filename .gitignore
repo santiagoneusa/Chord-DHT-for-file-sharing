@@ -16,4 +16,4 @@ venv/
 .env
 
 # Workflows
-.yml
+*.yml
