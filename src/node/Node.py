@@ -1,6 +1,8 @@
 class Peer:
     def __init__(self, ip, port):
         self.id = f'{ip}:{port}'
+        self.ip = ip
+        self.port = port
         self.files = {
             'proper': [],
             'shared': [],
