@@ -4,6 +4,7 @@ package peering;
 
 service PeeringService{
     rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
+    rpc DownloadFile(DownloadFileRequest) returns (DownloadFileResponse);
 }
 
 message UploadFileRequest{
@@ -12,4 +13,12 @@ message UploadFileRequest{
 }
 message UploadFileResponse{
     string response=1;
+}
+
+message DownloadFileRequest{
+    string filename=1;
+}
+message DownloadFileResponse{
+    string file=1;
+    bool confirmation=2;
 }

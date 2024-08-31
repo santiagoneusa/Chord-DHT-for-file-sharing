@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rpeering.proto\x12\x07peering\"3\n\x11UploadFileRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\"&\n\x12UploadFileResponse\x12\x10\n\x08response\x18\x01 \x01(\t2W\n\x0ePeeringService\x12\x45\n\nUploadFile\x12\x1a.peering.UploadFileRequest\x1a\x1b.peering.UploadFileResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rpeering.proto\x12\x07peering\"3\n\x11UploadFileRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\"&\n\x12UploadFileResponse\x12\x10\n\x08response\x18\x01 \x01(\t\"\'\n\x13\x44ownloadFileRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\":\n\x14\x44ownloadFileResponse\x12\x0c\n\x04\x66ile\x18\x01 \x01(\t\x12\x14\n\x0c\x63onfirmation\x18\x02 \x01(\x08\x32\xa4\x01\n\x0ePeeringService\x12\x45\n\nUploadFile\x12\x1a.peering.UploadFileRequest\x1a\x1b.peering.UploadFileResponse\x12K\n\x0c\x44ownloadFile\x12\x1c.peering.DownloadFileRequest\x1a\x1d.peering.DownloadFileResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,6 +35,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_UPLOADFILEREQUEST']._serialized_end=77
   _globals['_UPLOADFILERESPONSE']._serialized_start=79
   _globals['_UPLOADFILERESPONSE']._serialized_end=117
-  _globals['_PEERINGSERVICE']._serialized_start=119
-  _globals['_PEERINGSERVICE']._serialized_end=206
+  _globals['_DOWNLOADFILEREQUEST']._serialized_start=119
+  _globals['_DOWNLOADFILEREQUEST']._serialized_end=158
+  _globals['_DOWNLOADFILERESPONSE']._serialized_start=160
+  _globals['_DOWNLOADFILERESPONSE']._serialized_end=218
+  _globals['_PEERINGSERVICE']._serialized_start=221
+  _globals['_PEERINGSERVICE']._serialized_end=385
 # @@protoc_insertion_point(module_scope)
