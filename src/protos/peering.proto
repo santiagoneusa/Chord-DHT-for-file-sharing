@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package peering;
+
+service PeeringService{
+    rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
+}
+
+message UploadFileRequest{
+    string filename=1;
+    string type=2;
+}
+message UploadFileResponse{
+    string response=1;
+}
