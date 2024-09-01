@@ -20,7 +20,7 @@ class Server():
         return f"""ip={self.ip}\nport={self.port}\nnetwork_size={self.network_size}\nnumber_of_zones={self.number_of_zones}\nzone_size={self.zone_size}\nnetwork_zones_directory={self.network_zones_directory})"""
 
     def register_node(self, node_ip, node_port):
-        if self.registered_nodes == self.network_size: return -1, -1, -1
+        if self.registered_nodes == self.network_size: return -1, -1, -1, -1
 
         available_zone_key = self.get_available_zone_key()
         if available_zone_key:

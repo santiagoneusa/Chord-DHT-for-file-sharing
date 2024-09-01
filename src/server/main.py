@@ -17,7 +17,8 @@ def main():
 
     server = Server(IP, PORT, NETWORK_SIZE, NUMBER_OF_ZONES)
     
-    for i in range(64): server.register_node('127.0.0.1', f'400{i}')
+    for i in range(100): 
+        print(server.register_node('127.0.0.1', f'400{i}'))
     print(server.get_available_nodes_by_zone(8))
     print(server.unregister_node(8, 6))
     print(server.get_available_nodes_by_zone(8))
