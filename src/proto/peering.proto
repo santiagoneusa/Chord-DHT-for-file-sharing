@@ -5,71 +5,69 @@ package peering;
 service PeeringService{
     rpc ReceiveFile(ReceiveFileRequest) returns (ReceiveFileResponse);
     rpc SendFile(SendFileRequest) returns (SendFileResponse);
+
     rpc PeersByZone (PeersByZoneRequest) returns (PeersByZoneResponse);
     rpc Register(RegisterRequest) returns (RegisterResponse);
     rpc Unregister(UnregisterRequest) returns (UnregisterResponse);
 }
 
 
-
-
-
 message ReceiveFileRequest{
-    string filename=1;
-    bool properFile=2;
+    string filename = 1;
+    bool properFile = 2;
 }
 
 message ReceiveFileResponse{
-    string status=1;
-    string message=2;
+    string status = 1;
+    string message = 2;
 }
 
 
 message SendFileRequest{
-    string file=1;
-    bool properFile=2;
+    string file = 1;
+    bool properFile = 2;
 }
 
 message SendFileResponse{
-    string status=1;
-    string message=2;
-    string file=3;
+    string status = 1;
+    string message = 2;
+    string file = 3;
     
 }
 
 
 message PeersByZoneRequest{
-    int32 zone=1;
+    int32 zone = 1;
 }
 
 message PeersByZoneResponse{
-    string status=1;
-    string message=2;
-    repeated int32 id=3;
-    repeated string ipPort=4;
+    string status = 1;
+    string message = 2;
+    repeated int32 id = 3;
+    repeated string ipPort = 4;
     
 }
 
 message RegisterRequest{
-    string ip=1;
-    string port=2;
+    string ip = 1;
+    string port = 2;
 }
 
 message RegisterResponse{
-    string status=1;
-    string message=2;
-    int32 peerId=3;
-    int32 zoneKey=4;
-    int32 numberOfZones=5;
-    int32 zoneSize=6;
+    string status = 1;
+    string message = 2;
+    int32 peerId = 3;
+    int32 zoneKey = 4;
+    int32 numberOfZones = 5;
+    int32 zoneSize = 6;
 }
 
 message UnregisterRequest{
-    int32 zoneKey=1;
-    int32 id=2;
+    int32 zoneKey = 1;
+    int32 id = 2;
 }
 
 message UnregisterResponse{
-    string status=1;
-    string message=2;
+    string status = 1;
+    string message = 2;
 }

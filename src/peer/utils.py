@@ -10,5 +10,11 @@ def file_address(file, number_of_zones, zone_size):
 
     return node_id, zone_key
 
-def get_random_node_ip(node_ips):
+def get_random_peer_ip(node_ips):
     return random.choice(node_ips)
+
+def print_response(response):
+    print()
+    for key, value in response.items():
+        print(f'{key}: {value}')
+    print()
