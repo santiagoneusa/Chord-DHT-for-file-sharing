@@ -35,7 +35,7 @@ class Server(peering_pb2_grpc.PeeringServiceServicer):
         server_listener.wait_for_termination()
 
     # method overrided from peering_pb2_grpc
-    def Register(self, request):
+    def Register(self, request, context):
         if self.registered_peers == self.network_size:
             return peering_pb2.RegisterResponse(
                 status = 'failed', message = f'The network is currently full.', 
@@ -65,7 +65,7 @@ class Server(peering_pb2_grpc.PeeringServiceServicer):
         )
 
     # method overrided from peering_pb2_grpc
-    def Unregister(self, request):
+    def Unregister(self, request, context):
         try:
             peer_id_index = self.network_zones_directory[request.zoneKey]['id'].index(request.peerId)
             self.network_zones_directory[request.zoneKey]['id'].pop(peer_id_index)
@@ -75,7 +75,8 @@ class Server(peering_pb2_grpc.PeeringServiceServicer):
             return peering_pb2.UnregisterResponse(status = 'failed', message = f'The peer {request.peerId} was not unregistered from zone {request.zoneKey}.')
 
     # method overrided from peering_pb2_grpc
-    def PeersByZone(self, request):
+    
+    def PeersByZone(self, request, context):
         try:
             return peering_pb2.PeersByZoneResponse(
                 status = 'success', message = f'Peers of the zone {request.zone}', 

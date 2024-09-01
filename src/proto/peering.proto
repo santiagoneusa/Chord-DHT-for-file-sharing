@@ -3,29 +3,73 @@ syntax="proto3";
 package peering;
 
 service PeeringService{
-    rpc UploadFile(UploadFileRequest) returns (UploadFileResponse);
-    rpc DownloadFile(DownloadFileRequest) returns (DownloadFileResponse);
+    rpc ReceiveFile(ReceiveFileRequest) returns (ReceiveFileResponse);
+    rpc SendFile(SendFileRequest) returns (SendFileResponse);
+    rpc PeersByZone (PeersByZoneRequest) returns (PeersByZoneResponse);
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc Unregister(UnregisterRequest) returns (UnregisterResponse);
 }
 
 
 
 
 
-message UploadFileRequest{
+message ReceiveFileRequest{
     string filename=1;
-    string type=2;
+    bool properFile=2;
 }
 
-message UploadFileResponse{
-    string response=1;
+message ReceiveFileResponse{
+    string status=1;
+    string message=2;
 }
 
 
-message DownloadFileRequest{
-    string filename=1;
-}
-
-message DownloadFileResponse{
+message SendFileRequest{
     string file=1;
-    bool confirmation=2;
+    bool properFile=2;
+}
+
+message SendFileResponse{
+    string status=1;
+    string message=2;
+    string file=3;
+    
+}
+
+
+message PeersByZoneRequest{
+    int32 zone=1;
+}
+
+message PeersByZoneResponse{
+    string status=1;
+    string message=2;
+    repeated int32 id=3;
+    repeated string ipPort=4;
+    
+}
+
+message RegisterRequest{
+    string ip=1;
+    string port=2;
+}
+
+message RegisterResponse{
+    string status=1;
+    string message=2;
+    int32 peerId=3;
+    int32 zoneKey=4;
+    int32 numberOfZones=5;
+    int32 zoneSize=6;
+}
+
+message UnregisterRequest{
+    int32 zoneKey=1;
+    int32 id=2;
+}
+
+message UnregisterResponse{
+    string status=1;
+    string message=2;
 }

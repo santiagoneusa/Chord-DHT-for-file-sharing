@@ -34,28 +34,61 @@ class PeeringServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.UploadFile = channel.unary_unary(
-                '/peering.PeeringService/UploadFile',
-                request_serializer=peering__pb2.UploadFileRequest.SerializeToString,
-                response_deserializer=peering__pb2.UploadFileResponse.FromString,
+        self.ReceiveFile = channel.unary_unary(
+                '/peering.PeeringService/ReceiveFile',
+                request_serializer=peering__pb2.ReceiveFileRequest.SerializeToString,
+                response_deserializer=peering__pb2.ReceiveFileResponse.FromString,
                 _registered_method=True)
-        self.DownloadFile = channel.unary_unary(
-                '/peering.PeeringService/DownloadFile',
-                request_serializer=peering__pb2.DownloadFileRequest.SerializeToString,
-                response_deserializer=peering__pb2.DownloadFileResponse.FromString,
+        self.SendFile = channel.unary_unary(
+                '/peering.PeeringService/SendFile',
+                request_serializer=peering__pb2.SendFileRequest.SerializeToString,
+                response_deserializer=peering__pb2.SendFileResponse.FromString,
+                _registered_method=True)
+        self.PeersByZone = channel.unary_unary(
+                '/peering.PeeringService/PeersByZone',
+                request_serializer=peering__pb2.PeersByZoneRequest.SerializeToString,
+                response_deserializer=peering__pb2.PeersByZoneResponse.FromString,
+                _registered_method=True)
+        self.Register = channel.unary_unary(
+                '/peering.PeeringService/Register',
+                request_serializer=peering__pb2.RegisterRequest.SerializeToString,
+                response_deserializer=peering__pb2.RegisterResponse.FromString,
+                _registered_method=True)
+        self.Unregister = channel.unary_unary(
+                '/peering.PeeringService/Unregister',
+                request_serializer=peering__pb2.UnregisterRequest.SerializeToString,
+                response_deserializer=peering__pb2.UnregisterResponse.FromString,
                 _registered_method=True)
 
 
 class PeeringServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def UploadFile(self, request, context):
+    def ReceiveFile(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def DownloadFile(self, request, context):
+    def SendFile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def PeersByZone(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Register(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Unregister(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -64,15 +97,30 @@ class PeeringServiceServicer(object):
 
 def add_PeeringServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'UploadFile': grpc.unary_unary_rpc_method_handler(
-                    servicer.UploadFile,
-                    request_deserializer=peering__pb2.UploadFileRequest.FromString,
-                    response_serializer=peering__pb2.UploadFileResponse.SerializeToString,
+            'ReceiveFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReceiveFile,
+                    request_deserializer=peering__pb2.ReceiveFileRequest.FromString,
+                    response_serializer=peering__pb2.ReceiveFileResponse.SerializeToString,
             ),
-            'DownloadFile': grpc.unary_unary_rpc_method_handler(
-                    servicer.DownloadFile,
-                    request_deserializer=peering__pb2.DownloadFileRequest.FromString,
-                    response_serializer=peering__pb2.DownloadFileResponse.SerializeToString,
+            'SendFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.SendFile,
+                    request_deserializer=peering__pb2.SendFileRequest.FromString,
+                    response_serializer=peering__pb2.SendFileResponse.SerializeToString,
+            ),
+            'PeersByZone': grpc.unary_unary_rpc_method_handler(
+                    servicer.PeersByZone,
+                    request_deserializer=peering__pb2.PeersByZoneRequest.FromString,
+                    response_serializer=peering__pb2.PeersByZoneResponse.SerializeToString,
+            ),
+            'Register': grpc.unary_unary_rpc_method_handler(
+                    servicer.Register,
+                    request_deserializer=peering__pb2.RegisterRequest.FromString,
+                    response_serializer=peering__pb2.RegisterResponse.SerializeToString,
+            ),
+            'Unregister': grpc.unary_unary_rpc_method_handler(
+                    servicer.Unregister,
+                    request_deserializer=peering__pb2.UnregisterRequest.FromString,
+                    response_serializer=peering__pb2.UnregisterResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -86,7 +134,7 @@ class PeeringService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def UploadFile(request,
+    def ReceiveFile(request,
             target,
             options=(),
             channel_credentials=None,
@@ -99,9 +147,9 @@ class PeeringService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/peering.PeeringService/UploadFile',
-            peering__pb2.UploadFileRequest.SerializeToString,
-            peering__pb2.UploadFileResponse.FromString,
+            '/peering.PeeringService/ReceiveFile',
+            peering__pb2.ReceiveFileRequest.SerializeToString,
+            peering__pb2.ReceiveFileResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -113,7 +161,7 @@ class PeeringService(object):
             _registered_method=True)
 
     @staticmethod
-    def DownloadFile(request,
+    def SendFile(request,
             target,
             options=(),
             channel_credentials=None,
@@ -126,9 +174,90 @@ class PeeringService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/peering.PeeringService/DownloadFile',
-            peering__pb2.DownloadFileRequest.SerializeToString,
-            peering__pb2.DownloadFileResponse.FromString,
+            '/peering.PeeringService/SendFile',
+            peering__pb2.SendFileRequest.SerializeToString,
+            peering__pb2.SendFileResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def PeersByZone(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/peering.PeeringService/PeersByZone',
+            peering__pb2.PeersByZoneRequest.SerializeToString,
+            peering__pb2.PeersByZoneResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Register(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/peering.PeeringService/Register',
+            peering__pb2.RegisterRequest.SerializeToString,
+            peering__pb2.RegisterResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Unregister(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/peering.PeeringService/Unregister',
+            peering__pb2.UnregisterRequest.SerializeToString,
+            peering__pb2.UnregisterResponse.FromString,
             options,
             channel_credentials,
             insecure,
