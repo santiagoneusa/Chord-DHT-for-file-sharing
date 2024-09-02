@@ -90,7 +90,7 @@ Luego se empiezan a llenar aleatoriamente los ids de los nodos para ubicarlos en
 El servidor solo debe ser ejecutado puesto que no tiene ninguna funcionalidad interactiva. Por otro lado, el cliente al ejecutarse muestra un menú con 4 opciones de las cuales deberá ingresar una por teclado. Cada opción representa una funcionalidad distinta de la aplicación y mostrará un 'status' y un 'message', que son componentes de la respuesta de cada servicio.
 
 ## Video
-Mediante este [enlace]() puede acceder a un video explicativo del proyecto.
+Mediante este [enlace](https://eafit-my.sharepoint.com/:v:/g/personal/sneusar_eafit_edu_co/EYpmmkp6L25GoTFD_NsJaLIBp6ihHc9eJUb3Zl55cvvNfw) puede acceder a un video explicativo del proyecto.
 
 # Referencias
 * Referencias a YouTube
