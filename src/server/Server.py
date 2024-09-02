@@ -94,6 +94,7 @@ class Server(peering_pb2_grpc.PeeringServiceServicer):
     # method overrided from peering_pb2_grpc
     def PeersByZone(self, request, context):
         try:
+            print(f'Peers of the zone {request.zone}\n    - ID: {self.network_zones_directory[request.zone]['id']}\n    - IP Port: {self.network_zones_directory[request.zone]['ip_port']}')
             return peering_pb2.PeersByZoneResponse(
                 status = 'success', message = f'Peers of the zone {request.zone}', 
                 id = self.network_zones_directory[request.zone]['id'], ipPort = self.network_zones_directory[request.zone]['ip_port']
