@@ -34,10 +34,21 @@ Profesor: Edwin Nelson Montoya Múnera (emontoya@eafit.edu.co)
 
 # 2. Información general
 
-* Diseño de alto nivel
-* Arquitectura: Detalles de la organización del código por carpetas o descripción de algún archivo. (ESTRUCTURA DE DIRECTORIOS Y ARCHIVOS IMPORTANTE DEL PROYECTO, comando 'tree' de linux)
-* Patrones
-* Mejores prácticas utilizadas
+## 2.1. Diseño de clases
+![image](https://github.com/user-attachments/assets/64e906bc-5528-4b3f-a5d7-5425a9927c47)
+![image](https://github.com/user-attachments/assets/13e29464-c88f-471b-8ea5-5965d7114a97)
+
+## 2.2. Comunicación entre nodos y servidor
+En esta parte se puede ver la comunicación entre los peers y el servidor.
+La comunicación de los peers con el servidor se realiza para las peticiones de Register, Unregister, PeersByZone, get_available_zone. Y el servidor responde a cada una de estas peticiones con la estructura definida.
+La comunicación entre los peers se realiza para enviar datos y recibir los datos con las funciones RecieveFile y SendFile.
+![image](https://github.com/user-attachments/assets/b1b629b2-fa16-4bfa-a033-36bfff5a419f)
+
+## 2.3. Diseño e implementación de la red.
+En este caso puede verse cómo se empiezan a llenar las zonas o subespacios.
+En una primera instancia deben llenarse los subespacios, llendo del espacio cero al espacio n.
+Luego se empiezan a llenar aleatoriamente los ids de los nodos para ubicarlos en la zona a la que pertenezca el peer.
+![image](https://github.com/user-attachments/assets/017b126f-503c-4627-8d77-1bed4108afe3)
 
 # 3. Descripción del ambiente de desarrollo
 
@@ -74,7 +85,7 @@ Profesor: Edwin Nelson Montoya Múnera (emontoya@eafit.edu.co)
 9. Por cada Peer que desee correr debe ejecutar esta línea en una terminal distinta. Recuerde que en ./src/peer/.env debe actualizar el puerto en caso de querer añadir un Peer a la red.
 > python ./src/peer/main.py
 
-# 5. Información adicional
+# 4. Información adicional
 ## Uso
 El servidor solo debe ser ejecutado puesto que no tiene ninguna funcionalidad interactiva. Por otro lado, el cliente al ejecutarse muestra un menú con 4 opciones de las cuales deberá ingresar una por teclado. Cada opción representa una funcionalidad distinta de la aplicación y mostrará un 'status' y un 'message', que son componentes de la respuesta de cada servicio.
 
