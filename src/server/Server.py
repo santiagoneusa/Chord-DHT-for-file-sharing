@@ -69,6 +69,9 @@ class Server(peering_pb2_grpc.PeeringServiceServicer):
         self.registered_peers += 1
         self.network_zones_directory[available_zone_key]['id'].append(peer_id)
         self.network_zones_directory[available_zone_key]['ip_port'].append(f'{request.ip}:{request.port}')
+
+        print(f'Peer {peer_id} with IP:Port {request.ip}:{request.port} was registered on zone {available_zone_key}')
+
         return peering_pb2.RegisterResponse(
             status = 'success', message = f'The peer {peer_id} was registered on zone {available_zone_key}.', 
             peerId = peer_id, zoneKey = available_zone_key, numberOfZones = self.number_of_zones, zoneSize = self.zone_size
@@ -79,8 +82,12 @@ class Server(peering_pb2_grpc.PeeringServiceServicer):
         try:
             peer_id_index = self.network_zones_directory[request.zoneKey]['id'].index(request.id)
             self.network_zones_directory[request.zoneKey]['id'].pop(peer_id_index)
+            peer_ip = self.network_zones_directory[request.zoneKey]['ip_port'][peer_id_index]
             self.network_zones_directory[request.zoneKey]['ip_port'].pop(peer_id_index)
-            return peering_pb2.UnregisterResponse(status = 'success', message = f'The peer {request.id} was registered on zone {request.zoneKey}.')
+
+            print(f'Peer {request.id} with IP:Port {peer_ip} was unregistered on zone {request.zoneKey}')
+
+            return peering_pb2.UnregisterResponse(status = 'success', message = f'The peer {request.id} was unregistered on zone {request.zoneKey}.')
         except:
             return peering_pb2.UnregisterResponse(status = 'failed', message = f'The peer {request.id} was not unregistered from zone {request.zoneKey}.')
 

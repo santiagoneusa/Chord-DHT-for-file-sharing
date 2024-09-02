@@ -34,10 +34,10 @@ class PeeringServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.ReceiveFile = channel.unary_unary(
-                '/peering.PeeringService/ReceiveFile',
-                request_serializer=peering__pb2.ReceiveFileRequest.SerializeToString,
-                response_deserializer=peering__pb2.ReceiveFileResponse.FromString,
+        self.RecieveFile = channel.unary_unary(
+                '/peering.PeeringService/RecieveFile',
+                request_serializer=peering__pb2.RecieveFileRequest.SerializeToString,
+                response_deserializer=peering__pb2.RecieveFileResponse.FromString,
                 _registered_method=True)
         self.SendFile = channel.unary_unary(
                 '/peering.PeeringService/SendFile',
@@ -64,7 +64,7 @@ class PeeringServiceStub(object):
 class PeeringServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def ReceiveFile(self, request, context):
+    def RecieveFile(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -97,10 +97,10 @@ class PeeringServiceServicer(object):
 
 def add_PeeringServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'ReceiveFile': grpc.unary_unary_rpc_method_handler(
-                    servicer.ReceiveFile,
-                    request_deserializer=peering__pb2.ReceiveFileRequest.FromString,
-                    response_serializer=peering__pb2.ReceiveFileResponse.SerializeToString,
+            'RecieveFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.RecieveFile,
+                    request_deserializer=peering__pb2.RecieveFileRequest.FromString,
+                    response_serializer=peering__pb2.RecieveFileResponse.SerializeToString,
             ),
             'SendFile': grpc.unary_unary_rpc_method_handler(
                     servicer.SendFile,
@@ -134,7 +134,7 @@ class PeeringService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def ReceiveFile(request,
+    def RecieveFile(request,
             target,
             options=(),
             channel_credentials=None,
@@ -147,9 +147,9 @@ class PeeringService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/peering.PeeringService/ReceiveFile',
-            peering__pb2.ReceiveFileRequest.SerializeToString,
-            peering__pb2.ReceiveFileResponse.FromString,
+            '/peering.PeeringService/RecieveFile',
+            peering__pb2.RecieveFileRequest.SerializeToString,
+            peering__pb2.RecieveFileResponse.FromString,
             options,
             channel_credentials,
             insecure,

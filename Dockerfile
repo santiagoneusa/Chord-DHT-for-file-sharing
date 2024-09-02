@@ -1,15 +1,14 @@
-FROM python:3.10
+FROM python:3.12-slim
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+WORKDIR /app
 
-WORKDIR /code
+COPY requirements.txt .
 
-COPY . /code/
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+COPY . .
 
-EXPOSE 8000
+RUN cp /app/src/peer/.env.example /app/src/peer/.env
+RUN cp /app/src/server/.env.example /app/src/server/.env
 
-CMD ["python", "manage.py", "127.0.0.1", "2000"]
+EXPOSE 6000

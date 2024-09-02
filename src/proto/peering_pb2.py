@@ -24,33 +24,33 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rpeering.proto\x12\x07peering\":\n\x12ReceiveFileRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x12\n\nproperFile\x18\x02 \x01(\x08\"6\n\x13ReceiveFileResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\"3\n\x0fSendFileRequest\x12\x0c\n\x04\x66ile\x18\x01 \x01(\t\x12\x12\n\nproperFile\x18\x02 \x01(\x08\"A\n\x10SendFileResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04\x66ile\x18\x03 \x01(\t\"\"\n\x12PeersByZoneRequest\x12\x0c\n\x04zone\x18\x01 \x01(\x05\"R\n\x13PeersByZoneResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\n\n\x02id\x18\x03 \x03(\x05\x12\x0e\n\x06ipPort\x18\x04 \x03(\t\"+\n\x0fRegisterRequest\x12\n\n\x02ip\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\t\"}\n\x10RegisterResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06peerId\x18\x03 \x01(\x05\x12\x0f\n\x07zoneKey\x18\x04 \x01(\x05\x12\x15\n\rnumberOfZones\x18\x05 \x01(\x05\x12\x10\n\x08zoneSize\x18\x06 \x01(\x05\"0\n\x11UnregisterRequest\x12\x0f\n\x07zoneKey\x18\x01 \x01(\x05\x12\n\n\x02id\x18\x02 \x01(\x05\"5\n\x12UnregisterResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t2\xed\x02\n\x0ePeeringService\x12H\n\x0bReceiveFile\x12\x1b.peering.ReceiveFileRequest\x1a\x1c.peering.ReceiveFileResponse\x12?\n\x08SendFile\x12\x18.peering.SendFileRequest\x1a\x19.peering.SendFileResponse\x12H\n\x0bPeersByZone\x12\x1b.peering.PeersByZoneRequest\x1a\x1c.peering.PeersByZoneResponse\x12?\n\x08Register\x12\x18.peering.RegisterRequest\x1a\x19.peering.RegisterResponse\x12\x45\n\nUnregister\x12\x1a.peering.UnregisterRequest\x1a\x1b.peering.UnregisterResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rpeering.proto\x12\x07peering\":\n\x12RecieveFileRequest\x12\x10\n\x08\x66ileName\x18\x01 \x01(\t\x12\x12\n\nproperFile\x18\x02 \x01(\x08\"6\n\x13RecieveFileResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\"7\n\x0fSendFileRequest\x12\x10\n\x08\x66ileName\x18\x01 \x01(\t\x12\x12\n\nproperFile\x18\x02 \x01(\x08\"A\n\x10SendFileResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04\x66ile\x18\x03 \x01(\t\"\"\n\x12PeersByZoneRequest\x12\x0c\n\x04zone\x18\x01 \x01(\x05\"R\n\x13PeersByZoneResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\n\n\x02id\x18\x03 \x03(\x05\x12\x0e\n\x06ipPort\x18\x04 \x03(\t\"+\n\x0fRegisterRequest\x12\n\n\x02ip\x18\x01 \x01(\t\x12\x0c\n\x04port\x18\x02 \x01(\t\"}\n\x10RegisterResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06peerId\x18\x03 \x01(\x05\x12\x0f\n\x07zoneKey\x18\x04 \x01(\x05\x12\x15\n\rnumberOfZones\x18\x05 \x01(\x05\x12\x10\n\x08zoneSize\x18\x06 \x01(\x05\"0\n\x11UnregisterRequest\x12\x0f\n\x07zoneKey\x18\x01 \x01(\x05\x12\n\n\x02id\x18\x02 \x01(\x05\"5\n\x12UnregisterResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t2\xed\x02\n\x0ePeeringService\x12H\n\x0bRecieveFile\x12\x1b.peering.RecieveFileRequest\x1a\x1c.peering.RecieveFileResponse\x12?\n\x08SendFile\x12\x18.peering.SendFileRequest\x1a\x19.peering.SendFileResponse\x12H\n\x0bPeersByZone\x12\x1b.peering.PeersByZoneRequest\x1a\x1c.peering.PeersByZoneResponse\x12?\n\x08Register\x12\x18.peering.RegisterRequest\x1a\x19.peering.RegisterResponse\x12\x45\n\nUnregister\x12\x1a.peering.UnregisterRequest\x1a\x1b.peering.UnregisterResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'peering_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_RECEIVEFILEREQUEST']._serialized_start=26
-  _globals['_RECEIVEFILEREQUEST']._serialized_end=84
-  _globals['_RECEIVEFILERESPONSE']._serialized_start=86
-  _globals['_RECEIVEFILERESPONSE']._serialized_end=140
+  _globals['_RECIEVEFILEREQUEST']._serialized_start=26
+  _globals['_RECIEVEFILEREQUEST']._serialized_end=84
+  _globals['_RECIEVEFILERESPONSE']._serialized_start=86
+  _globals['_RECIEVEFILERESPONSE']._serialized_end=140
   _globals['_SENDFILEREQUEST']._serialized_start=142
-  _globals['_SENDFILEREQUEST']._serialized_end=193
-  _globals['_SENDFILERESPONSE']._serialized_start=195
-  _globals['_SENDFILERESPONSE']._serialized_end=260
-  _globals['_PEERSBYZONEREQUEST']._serialized_start=262
-  _globals['_PEERSBYZONEREQUEST']._serialized_end=296
-  _globals['_PEERSBYZONERESPONSE']._serialized_start=298
-  _globals['_PEERSBYZONERESPONSE']._serialized_end=380
-  _globals['_REGISTERREQUEST']._serialized_start=382
-  _globals['_REGISTERREQUEST']._serialized_end=425
-  _globals['_REGISTERRESPONSE']._serialized_start=427
-  _globals['_REGISTERRESPONSE']._serialized_end=552
-  _globals['_UNREGISTERREQUEST']._serialized_start=554
-  _globals['_UNREGISTERREQUEST']._serialized_end=602
-  _globals['_UNREGISTERRESPONSE']._serialized_start=604
-  _globals['_UNREGISTERRESPONSE']._serialized_end=657
-  _globals['_PEERINGSERVICE']._serialized_start=660
-  _globals['_PEERINGSERVICE']._serialized_end=1025
+  _globals['_SENDFILEREQUEST']._serialized_end=197
+  _globals['_SENDFILERESPONSE']._serialized_start=199
+  _globals['_SENDFILERESPONSE']._serialized_end=264
+  _globals['_PEERSBYZONEREQUEST']._serialized_start=266
+  _globals['_PEERSBYZONEREQUEST']._serialized_end=300
+  _globals['_PEERSBYZONERESPONSE']._serialized_start=302
+  _globals['_PEERSBYZONERESPONSE']._serialized_end=384
+  _globals['_REGISTERREQUEST']._serialized_start=386
+  _globals['_REGISTERREQUEST']._serialized_end=429
+  _globals['_REGISTERRESPONSE']._serialized_start=431
+  _globals['_REGISTERRESPONSE']._serialized_end=556
+  _globals['_UNREGISTERREQUEST']._serialized_start=558
+  _globals['_UNREGISTERREQUEST']._serialized_end=606
+  _globals['_UNREGISTERRESPONSE']._serialized_start=608
+  _globals['_UNREGISTERRESPONSE']._serialized_end=661
+  _globals['_PEERINGSERVICE']._serialized_start=664
+  _globals['_PEERINGSERVICE']._serialized_end=1029
 # @@protoc_insertion_point(module_scope)

@@ -18,8 +18,8 @@ def main():
             check_shared_files_thread = threading.Thread(target = peer.check_shared_files)
             check_shared_files_thread.start()
 
-            peer_listener_thread.join()
             menu_thread.join()
+            peer_listener_thread.join()
             check_shared_files_thread.join()
 
     except KeyboardInterrupt:

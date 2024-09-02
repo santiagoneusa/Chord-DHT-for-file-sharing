@@ -3,7 +3,7 @@ syntax="proto3";
 package peering;
 
 service PeeringService{
-    rpc ReceiveFile(ReceiveFileRequest) returns (ReceiveFileResponse);
+    rpc RecieveFile(RecieveFileRequest) returns (RecieveFileResponse);
     rpc SendFile(SendFileRequest) returns (SendFileResponse);
 
     rpc PeersByZone (PeersByZoneRequest) returns (PeersByZoneResponse);
@@ -12,19 +12,19 @@ service PeeringService{
 }
 
 
-message ReceiveFileRequest{
-    string filename = 1;
+message RecieveFileRequest{
+    string fileName = 1;
     bool properFile = 2;
 }
 
-message ReceiveFileResponse{
+message RecieveFileResponse{
     string status = 1;
     string message = 2;
 }
 
 
 message SendFileRequest{
-    string file = 1;
+    string fileName = 1;
     bool properFile = 2;
 }
 

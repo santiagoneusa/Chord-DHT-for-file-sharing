@@ -27,7 +27,7 @@ class Peer(peering_pb2_grpc.PeeringServiceServicer):
         self.server_stub = peering_pb2_grpc.PeeringServiceStub(self.server_channel)
 
     def __repr__(self):
-        return f'IP: {self.ip}\nPort: {self.port}\nProper files: {self.files['proper']}\nShared files: {self.files['shared']}\nId: {self.id}\nZone: {self.zone_key}'
+        return f'\nIP: {self.ip}\nPort: {self.port}\nProper files: {self.files['proper']}\nShared files: {self.files['shared']}\nId: {self.id}\nZone: {self.zone_key}'
 
     def peer_listener(self):
         try:
@@ -74,23 +74,24 @@ class Peer(peering_pb2_grpc.PeeringServiceServicer):
                 peer_friend_ip = get_random_peer_ip(peers_by_zone_response.ipPort)
                 proper_file = False
 
-            with grpc.insecure_channel(peer_friend_ip) as peer_friend_channel:
-                peer_friend_stub = peering_pb2_grpc.PeeringServiceStub(peer_friend_channel)
+            peer_friend_channel = grpc.insecure_channel(peer_friend_ip)
+            peer_friend_stub = peering_pb2_grpc.PeeringServiceStub(peer_friend_channel)
 
-                recieve_file_response = peer_friend_stub.RecieveFile(peering_pb2.RecieveFileRequest(file = file_name, properFile = proper_file))
-                
-                return {'status': recieve_file_response.status, 'message': recieve_file_response.message}
-        except:
-            return {'status': 'failed', 'message': f'The file {file_name} was not uploaded.'}
+            recieve_file_response = peer_friend_stub.RecieveFile(peering_pb2.RecieveFileRequest(fileName = file_name, properFile = proper_file))
+            return {'status': recieve_file_response.status, 'message': recieve_file_response.message}
+        except Exception as e:
+            return {'status': 'failed', 'message': f'Failed on upload_file: {e}'}
 
     # method overrided from peering_pb2_grpc
     def RecieveFile(self, request, context):
-        if request.proper_file:
-            self.files['proper'].append(request.file)
-        else:
-            self.files['shared'].append(request.file)
-
-        return peering_pb2.RecieveFileResponse(status = 'success', message = f'The file {request.file} was uploaded.')
+        try:
+            if request.properFile:
+                self.files['proper'].append(request.fileName)
+            else:
+                self.files['shared'].append(request.fileName)
+            return peering_pb2.RecieveFileResponse(status = 'success', message = f'The file {request.fileName} was uploaded.')
+        except Exception as e:
+            return peering_pb2.RecieveFileResponse(status = 'failed', message = f'Failed on RecieveFile: {e}')
 
     def download_file(self, file_name):
         try:
@@ -106,7 +107,7 @@ class Peer(peering_pb2_grpc.PeeringServiceServicer):
                 with grpc.insecure_channel(peer_friend_ip) as peer_friend_channel:
                     peer_friend_stub = peering_pb2_grpc.PeeringServiceStub(peer_friend_channel)
 
-                    send_file_response = peer_friend_stub.SendFile(peering_pb2.SendFileRequest(file = file_name, properFile = True))
+                    send_file_response = peer_friend_stub.SendFile(peering_pb2.SendFileRequest(fileName = file_name, properFile = True))
                     return {'status': send_file_response.status, 'message': send_file_response.message, 'file': send_file_response.file}
             else:
                 peer_index = 0
@@ -116,7 +117,7 @@ class Peer(peering_pb2_grpc.PeeringServiceServicer):
                     with grpc.insecure_channel(peer_friend_ip) as peer_friend_channel:
                         peer_friend_stub = peering_pb2_grpc.PeeringServiceStub(peer_friend_channel)
 
-                        send_file_response = peer_friend_stub.SendFile(peering_pb2.SendFileRequest(file = file_name, properFile = False))
+                        send_file_response = peer_friend_stub.SendFile(peering_pb2.SendFileRequest(fileName = file_name, properFile = False))
                         if send_file_response.status == 'success':
                             return {'status': send_file_response.status, 'message': send_file_response.message, 'file': send_file_response.file}                        
                 
@@ -128,13 +129,13 @@ class Peer(peering_pb2_grpc.PeeringServiceServicer):
     def SendFile(self, request, context):
         try:
             if request.properFile and request.file in self.files['proper']:
-                return peering_pb2.SendFileResponse(status = 'success', message = f'The file {request.file} was downloaded.', file = request.file)
+                return peering_pb2.SendFileResponse(status = 'success', message = f'The file {request.fileName} was downloaded.', file = request.fileName)
             elif not request.properFile and request.file in self.files['shared']:
-                return peering_pb2.SendFileResponse(status = 'success', message = f'The file {request.file} was downloaded.', file = request.file)
+                return peering_pb2.SendFileResponse(status = 'success', message = f'The file {request.fileName} was downloaded.', file = request.fileName)
             else:
-                return peering_pb2.SendFileResponse(status = 'failed', message = f'The file {request.file} was not downloaded.', file = request.file)
+                return peering_pb2.SendFileResponse(status = 'failed', message = f'The file {request.fileName} was not downloaded.', file = request.fileName)
         except:
-            return peering_pb2.SendFileResponse(status = 'failed', message = f'The file {request.file} was not downloaded.', file = request.file)
+            return peering_pb2.SendFileResponse(status = 'failed', message = f'The file {request.fileName} was not downloaded.', file = request.fileName)
 
     # falta implementar
     def check_shared_files(self):
@@ -164,3 +165,4 @@ class Peer(peering_pb2_grpc.PeeringServiceServicer):
             response = self.disconnect()
             print_response(response)
             print('An error occurred. You are being disconnected.')
+            exit(0)
